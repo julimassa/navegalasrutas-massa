@@ -1,0 +1,57 @@
+.item-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 15px;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.item-card img {
+  width: 100%;
+  max-width: 220px;   /* controla el tamaño máximo de la foto */
+  height: 220px;      /* altura fija para todas las fotos */
+  object-fit: cover;  /* recorta para que todas tengan la misma proporción */
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.item-card h3 {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #333;
+}
+
+.item-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.item-card .price {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #222;
+}
+
+.item-card button {
+  background: #494c4e;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.item-card button:hover {
+  background: #0056b3;
+}
