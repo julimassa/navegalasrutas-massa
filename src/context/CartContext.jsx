@@ -1,18 +1,34 @@
-import React, { createContext, useState } from "react";
+
+import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
 
-  // Agregar producto
+  const [cart, setCart] = useState(() => {
+    try {
+      const saved = localStorage.getItem("cart");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  
+  useEffect(() => {
+    try {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } catch {}
+  }, [cart]);
+
+
   const addToCart = (product) => {
     const exist = cart.find((item) => item.id === product.id);
     if (exist) {
       setCart(
         cart.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: Math.min(item.quantity + 1, 3) }
             : item
         )
       );
@@ -21,29 +37,61 @@ export function CartProvider({ children }) {
     }
   };
 
-  // Eliminar producto
+  
+  const incQty = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.min((item.quantity ?? 0) + 1, 3) }
+          : item
+      )
+    );
+  };
+
+ 
+  const decQty = (id) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === id
+            ? { ...item, quantity: Math.max((item.quantity ?? 0) - 1, 0) }
+            : item
+        )
+        .filter((item) => (item.quantity ?? 0) > 0)
+    );
+  };
+
+ 
   const removeFromCart = (id) => {
     setCart(cart.filter((item) => item.id !== id));
   };
 
-  // Vaciar carrito
   const clearCart = () => {
     setCart([]);
   };
 
-  // Cantidad total de productos
-  const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const totalQuantity = cart.reduce((acc, item) => acc + (item.quantity ?? 0), 0);
 
-  // price total
+
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + (item.price ?? 0) * (item.quantity ?? 0),
     0
   );
 
+  
+  const value = {
+    cart,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    incQty,
+    decQty,
+    totalQuantity,
+    totalPrice,
+  };
+
   return (
-    <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, totalQuantity, totalPrice }}
-    >
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );

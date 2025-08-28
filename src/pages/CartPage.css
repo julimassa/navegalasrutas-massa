@@ -1,0 +1,281 @@
+/* CartPage.css — layout tipo grilla de productos, pero para el carrito (scoped) */
+
+:root {
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --primary: #111827;
+  --danger: #b91c1c;
+  --radius: 14px;
+  --shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+.cart-page {
+  min-height: 100dvh;
+  background: var(--bg);
+  padding: clamp(16px, 2vw, 32px);
+  color: var(--text);
+}
+
+.cart-page .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cart-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.cart-title {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 800;
+}
+
+.cart-meta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* === Grilla de tarjetas (parecido a productos) === */
+.cart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* Tarjeta */
+.cart-card-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+}
+
+/* Imagen ajustada, no gigante */
+.cart-card-item__media {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+}
+.cart-card-item__img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+/* Contenido: nombre + precio + SKU */
+.cart-card-item__body {
+  display: grid;
+  gap: 6px;
+  padding: 12px 12px 0 12px;
+}
+.cart-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  word-break: break-word;
+}
+.cart-sku {
+  font-size: 12px;
+  color: var(--muted);
+}
+.cart-price {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Footer: cantidad + eliminar + subtotal */
+.cart-card-item__footer {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid var(--line);
+}
+
+/* Controles de cantidad estilo “selector” */
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.qty__btn {
+  appearance: none;
+  border: none;
+  background: #fff;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.qty__btn:disabled { opacity: .5; cursor: not-allowed; }
+.qty__value {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 700;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-link {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  text-decoration: underline;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-link.danger { color: var(--danger); }
+
+/* Subtotal por tarjeta */
+.subtotal {
+  font-weight: 800;
+  font-size: 16px;
+  text-align: right;
+}
+
+/* === Resumen general === */
+.cart-summary {
+  margin-top: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 14px;
+}
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+/* Botonera */
+.cart-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.btn.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Estado vacío */
+.cart-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 12px;
+}
+.cart-empty__icon {
+  font-size: 42px;
+  margin-bottom: 8px;
+  opacity: .7;
+}
+
+/* Antídoto contra estilos globales que hagan img { width:100% } */
+.cart-page img { max-width: none; }
+
+/* Hover/foco sutil */
+.btn, .qty__btn, .btn-link {
+  transition: transform .05s ease, box-shadow .15s ease;
+}
+.btn:hover, .qty__btn:hover { transform: translateY(-1px); }
+.btn:focus-visible, .qty__btn:focus-visible, .btn-link:focus-visible {
+  outline: 3px solid rgba(59,130,246,.35);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+/* ===== FIX DURO PARA IMÁGENES GIGANTES EN EL CARRITO ===== */
+
+/* 1) Neutralizá cualquier regla global tipo img { width:100% } dentro del carrito */
+.cart-page img {
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+}
+
+/* 2) Fuerza tamaño fijo de la foto del producto en las tarjetas del carrito */
+.cart-card-item__img {
+  display: block !important;
+  width: 140px !important;
+  height: 140px !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--line) !important;
+}
+
+/* 3) Asegura que el contenedor centre la imagen y no la estire */
+.cart-card-item__media {
+  display: grid !important;
+  place-items: center !important;
+  padding: 10px !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* 4) (Opcional) Si tus items están dentro de UL/OL en algún momento, limpiá bullets/márgenes */
+.cart-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cart-card-item__img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
