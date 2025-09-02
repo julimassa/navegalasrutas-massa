@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
 import "./NavBar.css";
 import CartWidget from "../cart/CartWidget";
 
@@ -6,15 +7,33 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="/img/logo-braixa-transparente-iloveimg.png" alt="Braixa Logo" />
+        <Link to="/">
+          <img src="/img/logo-braixa-transparente-iloveimg.png" alt="Braixa Logo" />
+        </Link>
       </div>
+
       <ul className="navbar-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Inicio
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/productos" className={({ isActive }) => (isActive ? "active" : "")}>
+          Productos
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/contacto" className={({ isActive }) => (isActive ? "active" : "")}>
+            Contacto
+          </NavLink>
+        </li>
       </ul>
 
       <CartWidget />
+
     </nav>
   );
 }

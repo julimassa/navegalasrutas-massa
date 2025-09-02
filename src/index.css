@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -27,7 +27,7 @@ body {
   
   min-width: 320px;
   min-height: 100vh;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   background-color: #ffffff; /* o el que quieras */
@@ -68,4 +68,60 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+/* === Sistema de botones (global) === */
+.btn {
+  appearance: none;
+  border: 1px solid #e5e7eb;          /* gris clarito */
+  background: #ffffff;                 /* fondo blanco */
+  color: #111;                         /* texto oscuro */
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform .05s ease, box-shadow .15s ease, background .2s ease, border-color .2s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Variantes */
+.btn.primary {
+  background: #111;      /* negro */
+  color: #fff;
+  border-color: #111;
+}
+
+.btn.ghost {
+  background: #fff;
+  color: #111;
+  border-color: #e5e7eb;
+}
+
+.btn.danger {
+  background: #b91c1c;   /* rojo */
+  color: #fff;
+  border-color: #b91c1c;
+}
+
+/* Tamaños (opcionales) */
+.btn.small  { padding: 6px 10px; font-weight: 600; }
+.btn.large  { padding: 12px 18px; }
+
+/* Botón ancho completo (opcional) */
+.btn.full { width: 100%; justify-content: center; }
+
+/* Accesibilidad: foco visible */
+.btn:focus-visible {
+  outline: 3px solid rgba(59,130,246,.35); /* celestito */
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+/* === Tipografía global forzada === */
+html, body, button, input, select, textarea {
+  font-family: Arial, Helvetica, sans-serif !important;
 }
