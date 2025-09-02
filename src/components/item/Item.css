@@ -15,9 +15,9 @@
 
 .item-card img {
   width: 100%;
-  max-width: 220px;   /* controla el tamaño máximo de la foto */
-  height: 220px;      /* altura fija para todas las fotos */
-  object-fit: cover;  /* recorta para que todas tengan la misma proporción */
+  max-width: 220px;   
+  height: 220px;      
+  object-fit: cover; 
   margin-bottom: 10px;
   border-radius: 8px;
 }

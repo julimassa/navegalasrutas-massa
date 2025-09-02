@@ -5,7 +5,7 @@ function ItemList({ products }) {
   return (
     <div className="item-grid">
       {products.map((prod) => (
-        // ⬅ Pasamos el OBJETO COMPLETO, no props sueltas
+        
         <Item key={prod.id} product={prod} />
       ))}
     </div>

@@ -1,13 +1,35 @@
-# React + Vite
+# Proyecto React - E-commerce (CoderHouse)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Aplicación de e-commerce desarrollada en React como entrega de curso REACT JS.  
+Incluye navegación con React Router, listado de productos, detalle individual, filtro por categorías, y carrito de compras con contexto global.
 
-Currently, two official plugins are available:
+## Tecnologías
+- React + Vite
+- React Router DOM
+- Context API
+- CSS Modules simples
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Rutas principales
+- `/` → Página de inicio con banner e imágenes.
+- `/productos` → Lista completa de productos.
+- `/category/:categoryId` → Lista de productos filtrados por categoría.
+- `/item/:id` → Detalle de un producto.
+- `/cart` → Carrito de compras.
+- `/contacto` → Página de contacto con formulario.
 
-## Expanding the ESLint configuration
+## Funcionalidades
+- **NavBar**: navegación con Inicio, Productos y Contacto.
+- **Listado**: componente `ItemList` que hace el `map` de productos.
+- **Asincronía**: productos simulados con promesas (`getProducts`, `getProductById`, `getProductsByCategory`).
+- **Categorías**: filtro con chips en la vista de productos, reusando `ItemListContainer`.
+- **Detalle**: `ItemDetailContainer` carga un solo producto y `ItemDetail` lo muestra.
+- **Carrito**:
+  - Agregar productos
+  - Incrementar / decrementar cantidad
+  - Eliminar ítems
+  - Vaciar carrito
+  - Mostrar total y cantidad
+- **Estilos**: tipografía global en Arial, sistema de botones `.btn` (primary, ghost, danger).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# navegalasrutas-massa
+

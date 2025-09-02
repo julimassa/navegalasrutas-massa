@@ -11,19 +11,19 @@ export default function App(){
     <>
       <NavBar />
       <Routes>
-        {/* Inicio con banner */}
+        
         <Route path="/" element={<Home />} />
 
-        {/* Productos: muestra TODOS los productos */}
+        
         <Route path="/productos" element={<ItemListContainer />} />
 
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
 
-        {/* Detalle y Carrito */}
+        
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/cart" element={<Cart />} />
 
-        {/* Contacto */}
+        
         <Route path="/contacto" element={<Contact />} />
 
         

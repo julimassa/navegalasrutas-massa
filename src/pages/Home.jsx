@@ -1,6 +1,16 @@
 export default function Home(){
   return (
     <main style={{maxWidth:1100, margin:"0 auto", padding:"12px"}}>
+       
+       <h1 style={{
+        textAlign: "center",
+        fontSize: "2rem",
+        fontWeight: "800",
+        margin: "20px 0",
+        color: "#111"
+      }}>
+        Bienvenidos a nuestra Tienda Online
+      </h1>
       
       <section style={{marginBottom:16}}>
         <img

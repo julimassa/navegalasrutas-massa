@@ -1,13 +1,13 @@
-// src/main.jsx
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
-import { CartProvider } from "./context/CartContext";  // 👈 importar el Provider
+import { CartProvider } from "./context/CartContext";  
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CartProvider>                      {/* 👈 envolver toda la app */}
+    <CartProvider>                      
       <BrowserRouter>
         <App />
       </BrowserRouter>

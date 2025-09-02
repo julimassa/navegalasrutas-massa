@@ -1,4 +1,3 @@
-// src/components/cart/Cart.jsx
 import { useContext, useMemo } from "react";
 import { CartContext } from "../../context/CartContext";
 import "../../pages/CartPage.css";
@@ -52,7 +51,7 @@ const handleCheckout = () => {
           <span className="cart-meta">{itemsCount} ítem(s)</span>
         </div>
 
-        {/* Tarjetas en grilla */}
+        
         <div className="cart-grid">
           {cart.map((item) => {
             const nombre = item.nombre ?? item.name ?? "Producto";
@@ -79,7 +78,7 @@ const handleCheckout = () => {
 
                 <div className="cart-card-item__footer">
                   <div className="item-actions">
-                    {/* Los botones de cantidad quedan deshabilitados por ahora (Paso 2) */}
+                    
                   <div className="qty">
                     <button
                       className="qty__btn"
@@ -87,7 +86,7 @@ const handleCheckout = () => {
                       onClick={() => decQty(item.id)}
                       disabled={qty <= 0}
                     >
-                      −
+                      -
                     </button>
 
                     <span className="qty__value">{qty}</span>
@@ -118,7 +117,7 @@ const handleCheckout = () => {
           })}
         </div>
 
-        {/* Resumen */}
+        
         <div className="cart-summary">
           <div className="summary-line">
             <span>Items</span>

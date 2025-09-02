@@ -1,12 +1,12 @@
-// src/components/itemListContainer/ItemListContainer.jsx
+
 import { useEffect, useState } from "react";
-import { useParams, NavLink } from "react-router-dom"; // 👈 agregado NavLink
+import { useParams, NavLink } from "react-router-dom"; 
 import ItemList from "../item/ItemList";
-import { getProducts, getProductsByCategory, CATEGORIES } from "../../data/products"; // 👈 agregado CATEGORIES
+import { getProducts, getProductsByCategory, CATEGORIES } from "../../data/products"; 
 import "./ItemListContainer.css";
 
 export default function ItemListContainer() {
-  const { categoryId } = useParams();          // si hay categoría en la URL, la leemos
+  const { categoryId } = useParams();          
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 

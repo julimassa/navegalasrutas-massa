@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";            // ⬅ agregado
+import { Link } from "react-router-dom";           
 import "./Item.css";
 import { CartContext } from "../../context/CartContext";
 
@@ -14,7 +14,7 @@ function Item({ product }) {
       <span>${product.price}</span>
 
       <div className="item-actions" style={{ display: "flex", gap: 8, marginTop: 8 }}>
-        {/* Link al detalle */}
+       
         <Link to={`/item/${product.id}`} className="btn ghost">
           Ver detalle
         </Link>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../data/products";          // ⬅ ruta exacta a tus datos
-import ItemDetail from "../itemDetail/ItemDetail";             // ⬅ ruta exacta al detalle
+import { getProductById } from "../../data/products";          
+import ItemDetail from "../itemDetail/ItemDetail";            
 
 export default function ItemDetailContainer(){
   const { id } = useParams();
