@@ -28,3 +28,35 @@
   color: #fff;
   border-color: #111;
 }
+
+.search-container {
+  margin: 12px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 320px;
+  background: #f9f9f9; 
+  color: #111;         
+  font-size: 0.95rem;
+}
+
+.search-input::placeholder {
+  color: #666; 
+}
+
+
+@media (max-width: 600px) {
+  .search-container {
+    justify-content: center;
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
+}

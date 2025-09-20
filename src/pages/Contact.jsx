@@ -1,27 +1,28 @@
+import "./Contact.css";
+import toast from "react-hot-toast";
 
-export default function Contact(){
+
+export default function Contact() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast.success("¡Gracias por contactarnos! Te responderemos a la brevedad.");
+  };
+
   return (
-    <main style={{maxWidth:800, margin:"0 auto", padding:"16px"}}>
+    <main className="contact-page">
       <h1>Contacto</h1>
-      <p>Dejanos tu consulta y te respondemos a la brevedad.</p>
+      <p>Si tenés consultas sobre nuestros productos, completá el formulario:</p>
 
-      <form className="card" style={{display:"grid", gap:12}}>
-        <div>
-          <label>Nombre</label>
-          <input className="input" name="nombre" placeholder="Tu nombre" />
-        </div>
-        <div>
-          <label>Email</label>
-          <input className="input" type="email" name="email" placeholder="tucorreo@ejemplo.com" />
-        </div>
-        <div>
-          <label>Mensaje</label>
-          <textarea className="input" name="mensaje" rows={5} placeholder="Escribí tu consulta..." />
-        </div>
-        <div>
-          <button className="btn primary" type="button">Enviar</button>
-        </div>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Tu nombre" required />
+        <input type="email" name="email" placeholder="Tu email" required />
+        <textarea name="message" placeholder="Escribí tu mensaje..." required />
+        
+        <button type="submit" className="btn primary">
+          Enviar
+        </button>
       </form>
+
     </main>
   );
 }

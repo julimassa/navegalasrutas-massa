@@ -1,9 +1,17 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import "./NavBar.css";
 import CartWidget from "../cart/CartWidget";
 
 function NavBar() {
+  const { pathname } = useLocation();
+
+  // Si la ruta empieza con /productos, /category o /item, es parte del catálogo
+  const isCatalogRoute =
+    pathname.startsWith("/productos") ||
+    pathname.startsWith("/category") ||
+    pathname.startsWith("/item");
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -20,9 +28,10 @@ function NavBar() {
         </li>
 
         <li>
-          <NavLink to="/productos" className={({ isActive }) => (isActive ? "active" : "")}>
-          Productos
-          </NavLink>
+          {/* Usamos Link normal pero le damos clase active si estamos en catálogo */}
+          <Link to="/productos" className={isCatalogRoute ? "active" : ""}>
+            Productos
+          </Link>
         </li>
 
         <li>
@@ -33,7 +42,6 @@ function NavBar() {
       </ul>
 
       <CartWidget />
-
     </nav>
   );
 }

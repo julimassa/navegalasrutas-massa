@@ -15,12 +15,16 @@
 
 .item-card img {
   width: 100%;
-  max-width: 220px;   
-  height: 220px;      
-  object-fit: cover; 
-  margin-bottom: 10px;
+  max-width: 220px;
+  height: 220px;
+  object-fit: cover;
+  margin: 0 auto 10px;
+  display: block;
   border-radius: 8px;
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
 }
+
 
 .item-card h3 {
   font-size: 1.1rem;
@@ -54,4 +58,95 @@
 
 .item-card button:hover {
   background: #0056b3;
+}
+
+.line-clamp-4{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.item-actions {
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  width: 100%;               
+  margin-top: 12px;
+  gap: 0;                    
+}
+
+.item-actions .btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn.ghost {
+  border: 1px solid #333;
+  background: transparent;
+  color: #333;
+}
+
+.btn.ghost:hover {
+  background: #f5f5f5;
+}
+
+
+.btn.primary {
+  border: none;
+  background: #494c4e; 
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #0056b3; 
+}
+
+.line-clamp-4{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4px;          /* separa del "Ver más" */
+}
+
+/* "Ver más" como link de texto */
+.item-card a.ver-mas{
+  display: inline-block;       /* queda en su propia línea */
+  margin-top: 2px;
+  font-size: 14px;
+  color: #0a66c2;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* precio en línea propia (no al lado del link) */
+.item-card .price{
+  display: block;              /* fuerza salto de línea */
+  font-weight: bold;
+  font-size: 1rem;
+  color: #222;
+  margin: 8px 0 4px;
+}
+
+.item-card img:hover {
+  transform: scale(1.5);
+  z-index: 10;
+  position: relative;
 }

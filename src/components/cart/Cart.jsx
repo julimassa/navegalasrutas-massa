@@ -2,9 +2,8 @@ import { useContext, useMemo } from "react";
 import { CartContext } from "../../context/CartContext";
 import "../../pages/CartPage.css";
 import { useNavigate } from "react-router-dom";
-
-
-
+import { Link } from "react-router-dom";
+import { formatPrice } from "../../utils/format";
 
 const Cart = () => {
   const { cart, removeFromCart, clearCart, totalPrice, incQty, decQty } = useContext(CartContext);
@@ -20,12 +19,6 @@ const Cart = () => {
   clearCart();
   navigate("/");              
 };
-
-const handleCheckout = () => {
-  clearCart();                
-  navigate("/");              
-};
-
   if (!cart || cart.length === 0) {
     return (
       <div className="cart-page">
@@ -60,6 +53,8 @@ const handleCheckout = () => {
             const precio = Number(item.price ?? 0);
             const qty = Number(item.quantity ?? 0);
             const subtotal = precio * qty;
+            const restante = Math.max(Number(item.stock ?? 0) - qty, 0);
+
 
             return (
               <article className="cart-card-item" key={item.id}>
@@ -73,7 +68,10 @@ const handleCheckout = () => {
 
                 <div className="cart-card-item__body">
                   <h3 className="cart-name">{nombre}</h3>
-                  <div className="cart-price">${precio}</div>
+                  <div className="cart-price">{formatPrice(precio)}</div>
+                  <div style={{ opacity: 0.7, fontSize: 14 }}>
+                    Stock restante: {restante}
+                  </div>
                 </div>
 
                 <div className="cart-card-item__footer">
@@ -95,7 +93,7 @@ const handleCheckout = () => {
                       className="qty__btn"
                       aria-label="Sumar"
                       onClick={() => incQty(item.id)}
-                      disabled={qty >= 3}
+                      disabled={qty >= Number(item.stock ?? 0)}   
                     >
                       +
                     </button>
@@ -110,7 +108,7 @@ const handleCheckout = () => {
                     </button>
                   </div>
 
-                  <div className="subtotal">Subtotal: ${subtotal}</div>
+                  <div className="subtotal">Subtotal: {formatPrice(subtotal)}</div>
                 </div>
               </article>
             );
@@ -125,17 +123,20 @@ const handleCheckout = () => {
           </div>
           <div className="summary-total">
             <span>Total</span>
-            <span>${totalPrice}</span>
+            <span>{formatPrice(totalPrice)}</span>
           </div>
 
           <div className="cart-actions">
-          <button className="btn danger" onClick={handleClear}>
-            Vaciar carrito
-          </button>
-          <button className="btn primary" onClick={handleCheckout}>
-            Finalizar compra
-          </button>
-        </div>
+            <button className="btn danger" onClick={handleClear}>
+              Vaciar carrito
+            </button>
+
+            {cart.length > 0 && (
+              <Link to="/checkout" className="btn primary">
+                Finalizar compra
+              </Link>
+            )}
+          </div>
 
         </div>
       </div>
