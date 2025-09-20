@@ -3,14 +3,14 @@ import { collection, doc, runTransaction, Timestamp } from "firebase/firestore";
 
 export async function createOrderAndDecrementStock({ buyer, items }) {
   const ordersCol = collection(db, "orders");
-  const orderRef = doc(ordersCol); // crea ID nuevo
+  const orderRef = doc(ordersCol); 
 
   await runTransaction(db, async (tx) => {
-    // 1) Leer TODO antes de escribir
-    const productStates = []; // [{ ref, title, current, need }]
+    
+    const productStates = []; 
     for (const it of items) {
       const ref = doc(db, "products", it.id);
-      const snap = await tx.get(ref);              // ← SOLO LEEMOS ACÁ
+      const snap = await tx.get(ref);              
       if (!snap.exists()) {
         throw new Error(`Producto no existe: ${it.title}`);
       }
@@ -24,13 +24,11 @@ export async function createOrderAndDecrementStock({ buyer, items }) {
       }
       productStates.push({ ref, title: data.title ?? it.title, current, need });
     }
-
-    // 2) Escribir (sin más lecturas)
+    
     for (const p of productStates) {
       tx.update(p.ref, { stock: p.current - p.need });
     }
 
-    // 3) Crear la orden
     const total = items.reduce(
       (acc, it) => acc + Number(it.price ?? 0) * Number(it.quantity ?? 0),
       0

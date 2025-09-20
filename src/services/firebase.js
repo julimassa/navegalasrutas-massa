@@ -1,4 +1,3 @@
-// src/services/firebase.js
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
@@ -11,9 +10,7 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
-// Exportar Firestore
 export const db = getFirestore(app);
 export default app;  // 👈 esta línea es la que hace falta para la prueba en Home

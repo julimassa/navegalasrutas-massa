@@ -3,8 +3,7 @@ import toast from "react-hot-toast";
 
 export const CartContext = createContext();
 
-export function CartProvider({ children }) {
-  // Persistencia en localStorage (como ya tenías)
+export function CartProvider({ children }) {  
   const [cart, setCart] = useState(() => {
     try {
       const saved = localStorage.getItem("cart");
@@ -20,7 +19,6 @@ export function CartProvider({ children }) {
     } catch {}
   }, [cart]);
 
-  /** Agregar: respeta el stock del producto (de Firestore) */
   const addToCart = (product, qty = 1) => {
     const max = Number(product?.stock ?? 0);
     if (max <= 0) {
@@ -36,7 +34,6 @@ export function CartProvider({ children }) {
         const currentQty = Number(next[idx].quantity ?? 0);
         const newQty = Math.min(currentQty + qty, max);
 
-        // guardamos también el stock actual
         next[idx] = { ...next[idx], quantity: newQty, stock: max };
 
         if (newQty === currentQty) {
@@ -45,12 +42,10 @@ export function CartProvider({ children }) {
         return next;
       }
 
-      // nuevo item con su stock real
       return [...prev, { ...product, quantity: Math.min(qty, max), stock: max }];
     });
   };
 
-  /** Aumentar cantidad: tope por stock */
   const incQty = (id) => {
     setCart((prev) =>
       prev.map((item) => {
@@ -65,7 +60,6 @@ export function CartProvider({ children }) {
     );
   };
 
-  /** Disminuir cantidad (quita el item si queda en 0) */
   const decQty = (id) => {
     setCart((prev) =>
       prev
@@ -78,15 +72,11 @@ export function CartProvider({ children }) {
     );
   };
 
-  /** Quitar un producto del carrito */
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  /** Vaciar carrito */
   const clearCart = () => setCart([]);
-
-  /** Totales */
   const totalQuantity = cart.reduce((acc, item) => acc + (item.quantity ?? 0), 0);
   const totalPrice = cart.reduce(
     (acc, item) => acc + Number(item.price ?? 0) * Number(item.quantity ?? 0),

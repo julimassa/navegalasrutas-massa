@@ -1,8 +1,7 @@
-// src/components/ui/Breadcrumb.jsx
 import { Link } from "react-router-dom";
 
 export default function Breadcrumb({ items = [] }) {
-  // items: [{ label: string, to?: string }]
+  
   return (
     <nav aria-label="breadcrumb" style={{ margin: "8px 0 12px" }}>
       {items.map((it, idx) => {

@@ -5,13 +5,11 @@ import { getProducts, getProductsByCategory } from "../../services/products";
 import "./ItemListContainer.css";
 import Breadcrumb from "../ui/Breadcrumb";
 
-// ✅ Categorías fijas (coinciden con Firestore)
 const CATEGORIES = [
   { id: "militares", label: "Cintos Militares" },
   { id: "diseno",    label: "Cintos de Diseño" },
 ];
 
-// 👉 Función para normalizar strings (quita acentos y pasa a minúsculas)
 function normalize(str) {
   return str
     .normalize("NFD")
@@ -24,7 +22,7 @@ export default function ItemListContainer() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [q, setQ] = useState(""); // 🔍 query del buscador
+  const [q, setQ] = useState(""); 
 
   useEffect(() => {
     let cancelled = false;
@@ -54,7 +52,6 @@ export default function ItemListContainer() {
     };
   }, [categoryId]);
 
-  // 👉 Aplico búsqueda con normalización (ignora acentos y mayúsculas)
   const filtered = useMemo(() => {
     const term = normalize(q.trim());
     if (!term) return items;
@@ -84,8 +81,7 @@ export default function ItemListContainer() {
       ) : (
         <Breadcrumb items={[{ label: "Inicio", to: "/" }, { label: "Productos" }]} />
       )}
-
-      {/* 🔍 Buscador */}
+      
       <div className="search-container">
         <input
           type="search"

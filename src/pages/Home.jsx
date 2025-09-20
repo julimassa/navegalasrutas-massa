@@ -24,7 +24,6 @@ export default function Home() {
 
   return (
     <main className="home">
-      {/* HERO con carrusel */}
       <section className="hero">
         <Slider {...settings}>
           <div>
@@ -74,7 +73,6 @@ export default function Home() {
         </Slider>
       </section>
 
-      {/* Tarjetas de categorías */}
       <section className="home-cats">
         <Link to="/category/militares" className="cat-card">
           <img src="/img/foto-1.jpg" alt="Cintos Militares" />

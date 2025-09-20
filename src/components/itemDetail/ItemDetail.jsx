@@ -9,7 +9,6 @@ export default function ItemDetail({ product }) {
 
   if (!product) return null;
 
-  // Normalización de claves
   const titulo = product.nombre ?? product.title ?? "Producto sin nombre";
   const imgSrc = product.imagen ?? product.image ?? "";
   const desc   = product.descripcion ?? product.description ?? "Sin descripción";

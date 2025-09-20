@@ -23,9 +23,9 @@
 }
 
 .navbar-links a.active {
-  font-weight: 700;          /* Negrita */
-  color: #494c4e;            /* Color destacado */
-  text-decoration: underline; /* Subrayado */
-  text-underline-offset: 4px; /* Espacio entre texto y subrayado */
+  font-weight: 700;          
+  color: #494c4e;           
+  text-decoration: underline; 
+  text-underline-offset: 4px;
 }
 

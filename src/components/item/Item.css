@@ -60,6 +60,13 @@
   background: #0056b3;
 }
 
+.line-clamp-4{
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .item-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -114,11 +121,11 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 4px;          /* separa del "Ver más" */
+  margin-bottom: 4px;          
 }
 
 .item-card a.ver-mas{
-  display: inline-block;       /* queda en su propia línea */
+  display: inline-block;       
   margin-top: 2px;
   font-size: 14px;
   color: #0a66c2;
@@ -127,9 +134,8 @@
   font-weight: 500;
 }
 
-/* precio en línea propia (no al lado del link) */
 .item-card .price{
-  display: block;              /* fuerza salto de línea */
+  display: block;             
   font-weight: bold;
   font-size: 1rem;
   color: #222;

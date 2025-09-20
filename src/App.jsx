@@ -14,23 +14,14 @@ export default function App() {
   return (
     <>
       <NavBar />
-      <Routes>
-         {/* Página de inicio → Bienvenida */}
-         <Route path="/" element={<Home />} />
-
-        {/* Productos y catálogo */}
+      <Routes>         
+        <Route path="/" element={<Home />} />
         <Route path="/productos" element={<ItemListContainer />} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/checkout" element={<Checkout />} />
-
-        {/* Carrito */}
         <Route path="/cart" element={<Cart />} />
-
-        {/* Otras páginas */}
         <Route path="/contacto" element={<Contact />} />
-
-        {/* Redirección genérica */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster
@@ -39,7 +30,7 @@ export default function App() {
          style: { fontSize: "0.95rem" }
        }}
       />
-       <Footer />
+      <Footer />
     </>
   );
 }

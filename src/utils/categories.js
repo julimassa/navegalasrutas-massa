@@ -1,7 +1,6 @@
-// src/utils/categories.js
 export const CATEGORY_LABELS = {
   militares: "Cintos Militares",
-  diseno: "Cintos de Diseño",      // usamos "diseno" como id en la URL/DB
+  diseno: "Cintos de Diseño",     
 };
 
 export function getCategoryLabel(id) {

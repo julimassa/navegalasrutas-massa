@@ -5,8 +5,7 @@ import CartWidget from "../cart/CartWidget";
 
 function NavBar() {
   const { pathname } = useLocation();
-
-  // Si la ruta empieza con /productos, /category o /item, es parte del catálogo
+  
   const isCatalogRoute =
     pathname.startsWith("/productos") ||
     pathname.startsWith("/category") ||
@@ -27,8 +26,7 @@ function NavBar() {
           </NavLink>
         </li>
 
-        <li>
-          {/* Usamos Link normal pero le damos clase active si estamos en catálogo */}
+        <li>          
           <Link to="/productos" className={isCatalogRoute ? "active" : ""}>
             Productos
           </Link>

@@ -1,4 +1,3 @@
-
 :root {
   --bg: #f7f7f8;
   --card: #ffffff;
@@ -154,7 +153,6 @@
   text-align: right;
 }
 
-
 .cart-summary {
   margin-top: 18px;
   background: var(--card);
@@ -178,7 +176,6 @@
   font-weight: 900;
   font-size: 18px;
 }
-
 
 .cart-actions {
   margin-top: 10px;
@@ -209,7 +206,6 @@
 }
 .btn:disabled { opacity: .6; cursor: not-allowed; }
 
-
 .cart-empty {
   text-align: center;
   color: var(--muted);
@@ -221,9 +217,7 @@
   opacity: .7;
 }
 
-
 .cart-page img { max-width: none; }
-
 
 .btn, .qty__btn, .btn-link {
   transition: transform .05s ease, box-shadow .15s ease;

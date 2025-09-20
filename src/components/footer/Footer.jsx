@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
-        {/* Marca */}
+       
         <div className="footer-brand">
           <img
             src="/img/logo-braixa-transparente-iloveimg.png"
@@ -18,8 +18,7 @@ export default function Footer() {
             Cintos artesanales, calidad y diseño.
           </p>
         </div>
-
-        {/* Navegación */}
+        
         <nav className="footer-nav">
           <h4>Navegación</h4>
           <ul>
@@ -29,13 +28,11 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* Contacto */}
         <div className="footer-contact">
           <h4>Contacto</h4>
           <ul>
             <li>📧 <a href="mailto:braixa@gmail.com">braixa@gmail.com</a></li>
             <li>📍 Buenos Aires, Argentina</li>
-            {/* si más adelante agregás redes, podés poner los links acá */}
           </ul>
         </div>
       </div>

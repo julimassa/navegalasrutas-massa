@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import { createOrderAndDecrementStock } from "../services/orders"; // 👈
+import { createOrderAndDecrementStock } from "../services/orders"; 
 import { formatPrice } from "../utils/format";
 import toast from "react-hot-toast";
 

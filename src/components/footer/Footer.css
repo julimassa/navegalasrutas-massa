@@ -1,6 +1,6 @@
 .site-footer {
   margin-top: 28px;
-  background: #faa851;         /* fondo oscuro elegante */
+  background: #faa851;        
   color: #eee;
 }
 
@@ -63,7 +63,7 @@
   font-size: 0.9rem;
 }
 
-/* 📱 responsive */
+
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
