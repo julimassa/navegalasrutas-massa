@@ -128,7 +128,7 @@ Instalar dependencias:
 npm install
 
 
-Configurar Firebase en src/services/firebase.js con tus credenciales.
+Configurar Firebase en src/services/firebase.jsx con tus credenciales.
 
 Ejecutar en modo desarrollo:
 

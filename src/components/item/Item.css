@@ -2,7 +2,7 @@
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: hidden;               
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   padding: 15px;
@@ -23,8 +23,12 @@
   border-radius: 8px;
   transition: transform 0.25s ease;
   cursor: zoom-in;
+  will-change: transform;
 }
 
+.item-card img:hover {
+  transform: scale(1.08);          
+}
 
 .item-card h3 {
   font-size: 1.1rem;
@@ -39,10 +43,11 @@
 }
 
 .item-card .price {
+  display: block;
   font-weight: bold;
   font-size: 1rem;
-  margin: 10px 0;
   color: #222;
+  margin: 8px 0 4px;
 }
 
 .item-card button {
@@ -60,11 +65,22 @@
   background: #0056b3;
 }
 
-.line-clamp-4{
+.line-clamp-4 {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.item-card a.ver-mas {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 14px;
+  color: #0a66c2;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .item-grid {
@@ -75,16 +91,11 @@
 
 .item-actions {
   display: flex;
-  justify-content: center;   
+  justify-content: center;
   align-items: center;
-  width: 100%;               
+  width: 100%;
   margin-top: 12px;
-  gap: 0;                    
-}
-
-.item-actions .btn {
-  margin-left: auto;
-  margin-right: auto;
+  gap: 0; 
 }
 
 .btn {
@@ -108,42 +119,10 @@
 
 .btn.primary {
   border: none;
-  background: #494c4e; 
+  background: #494c4e;
   color: #fff;
 }
 
 .btn.primary:hover {
-  background: #0056b3; 
-}
-
-.line-clamp-4{
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-bottom: 4px;          
-}
-
-.item-card a.ver-mas{
-  display: inline-block;       
-  margin-top: 2px;
-  font-size: 14px;
-  color: #0a66c2;
-  text-decoration: underline;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.item-card .price{
-  display: block;             
-  font-weight: bold;
-  font-size: 1rem;
-  color: #222;
-  margin: 8px 0 4px;
-}
-
-.item-card img:hover {
-  transform: scale(1.5);
-  z-index: 10;
-  position: relative;
+  background: #0056b3;
 }

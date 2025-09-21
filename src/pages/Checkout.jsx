@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-import { createOrderAndDecrementStock } from "../services/orders"; 
+import { createOrderAndDecrementStock } from "../services/orders";
 import { formatPrice } from "../utils/format";
 import toast from "react-hot-toast";
-
 
 export default function Checkout() {
   const { cart, totalPrice, clearCart } = useContext(CartContext);
@@ -23,19 +22,22 @@ export default function Checkout() {
     try {
       setLoading(true);
 
+      // Normalizamos items del carrito
       const items = cart.map((p) => ({
-        id: p.id,
-        title: p.title ?? p.nombre ?? "Producto",
-        price: Number(p.price ?? 0),
+        id: String(p.id),
+        title: String(p.title ?? p.nombre ?? "Producto"),
+        price: Number(p.price),
         quantity: Number(p.quantity ?? 1),
       }));
 
-      const id = await createOrderAndDecrementStock({ buyer, items });
-      setOrderId(id);
+      const { orderId } = await createOrderAndDecrementStock({ buyer, items });
+
+      setOrderId(orderId);
       clearCart();
+      toast.success("¡Orden creada!");
     } catch (err) {
-      console.error(err);
-      toast.error("No pudimos crear la orden. Intenta nuevamente.");
+      console.error("Checkout error:", err);
+      toast.error(err?.message ?? "No se pudo generar la orden");
     } finally {
       setLoading(false);
     }
@@ -58,7 +60,7 @@ export default function Checkout() {
         <p>Tu carrito está vacío.</p>
       ) : (
         <>
-          <ul style={{ paddingLeft: 18 }}>
+          <ul style={{ marginBottom: 12 }}>
             {cart.map((p) => (
               <li key={p.id}>
                 {(p.title ?? p.nombre) || "Producto"} × {p.quantity ?? 1} — {formatPrice(p.price)}
